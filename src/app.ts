@@ -14,7 +14,9 @@ const app: FastifyPluginAsync<AppOptions> = async (
     opts
 ): Promise<void> => {
   // Place here your custom code!
-
+  await fastify.register(require('@fastify/swagger'))
+  
+  await fastify.register(require('@fastify/swagger-ui'))
   // Do not touch the following lines
 
   // This loads all plugins defined in plugins
@@ -31,7 +33,6 @@ const app: FastifyPluginAsync<AppOptions> = async (
     dir: join(__dirname, 'routes'),
     options: opts
   })
-
 };
 
 export default app;
