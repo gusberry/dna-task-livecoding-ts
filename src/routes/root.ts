@@ -1,8 +1,10 @@
 import { FastifyPluginAsync } from 'fastify'
+import {CovidCase} from "../entity/CovidCase";
+import {AppDataSource} from "../data-source";
 
 const root: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
-  fastify.get('/', async function (request, reply) {
-    return { root: true }
+  fastify.get('/covidCases', async function (request, reply) {
+    return AppDataSource.manager.find(CovidCase)
   })
 }
 
