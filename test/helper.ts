@@ -2,6 +2,7 @@
 const helper = require('fastify-cli/helper.js')
 import * as path from 'path'
 import * as tap from 'tap';
+import { AppDataSource } from '../src/data-source'
 
 export type Test = typeof tap['Test']['prototype'];
 
@@ -24,7 +25,10 @@ async function build (t: Test) {
   const app = await helper.build(argv, await config())
 
   // Tear down our app after we are done
-  t.teardown(() => void app.close())
+  t.teardown(async () => {
+    await AppDataSource.destroy()
+    app.close()
+  })
 
   return app
 }

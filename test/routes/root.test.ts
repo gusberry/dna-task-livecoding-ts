@@ -1,15 +1,7 @@
-import {afterEach, beforeEach, test} from 'tap'
+import {test} from 'tap'
 import {build} from '../helper'
-import {AppDataSource} from "../../src/data-source";
 import {CovidCaseDTO} from "../../src/dto/CovidCaseDTO";
 import {v4 as uuidv4} from 'uuid';
-
-beforeEach(async () => {
-  await AppDataSource.initialize()
-})
-afterEach(async () => {
-  await AppDataSource.destroy()
-})
 
 test('should get existing covid cases', async (t) => {
   // given
