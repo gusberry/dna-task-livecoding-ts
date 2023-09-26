@@ -1,7 +1,9 @@
 # How should I start
-1. Check if application is starting.
+1. Clone the repository
+1. `npm install`
+1. Check if application is starting (`npm run dev`).
     1. Node >= 16.x.x
-2. Run test to check if they are running.
+1. Run tests (`npm run test`) to check if they are running.
 
 ## Scenario
 
