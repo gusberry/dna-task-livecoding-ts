@@ -3,10 +3,10 @@ import {CovidCase} from "../entity/CovidCase";
 import {AppDataSource} from "../data-source";
 
 const cases: FastifyPluginAsync = async (fastify): Promise<void> => {
-  fastify.get<{ Querystring: {} }>('/cases', async function (req) {
+  fastify.get<{ Querystring: {}, Params: {}, Body: {} }>('/cases', async function (req) {
     return AppDataSource.manager.find(CovidCase)
   })
-  fastify.post<{ Body: { userId: string } }>('/cases', {
+  fastify.post<{ Querystring: {}, Params: {}, Body: { userId: string } }>('/cases', {
     schema: {
       body: {
         type: 'object',
