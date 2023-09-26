@@ -7,11 +7,12 @@ export const AppDataSource = new DataSource({
   entities: [CovidCase],
 })
 
-AppDataSource.initialize()
-  .then(() => {
-    AppDataSource.synchronize()
-    console.log("Data Source has been initialized!")
-  })
-  .catch((err) => {
-    console.error("Error during Data Source initialization", err)
-  })
+export const initializeDataSource = async () => {
+  await AppDataSource.initialize()
+    .then(async () => {
+      await AppDataSource.synchronize()
+    })
+    .catch((err) => {
+      console.error("Error during Data Source initialization", err)
+    })
+}

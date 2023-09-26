@@ -2,6 +2,7 @@ import { join } from 'path';
 import AutoLoad, {AutoloadPluginOptions} from '@fastify/autoload';
 import { FastifyPluginAsync, FastifyServerOptions } from 'fastify';
 import "reflect-metadata"
+import { initializeDataSource } from './data-source'
 export interface AppOptions extends FastifyServerOptions, Partial<AutoloadPluginOptions> {
 
 }
@@ -17,6 +18,8 @@ const app: FastifyPluginAsync<AppOptions> = async (
   await fastify.register(require('@fastify/swagger'))
   
   await fastify.register(require('@fastify/swagger-ui'))
+
+  await initializeDataSource()
 
   // Do not touch the following lines
 
