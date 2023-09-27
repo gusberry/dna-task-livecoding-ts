@@ -1,15 +1,18 @@
-import {Entity, PrimaryGeneratedColumn, Column, BaseEntity} from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, CreateDateColumn } from "typeorm";
 
 @Entity()
 export class CovidCase extends BaseEntity {
   @PrimaryGeneratedColumn()
-  id: number
+  id: number;
 
   @Column()
-  userId: string
+  userId: string;
 
-  constructor (userId: string) {
-    super()
-    this.userId = userId
+  @CreateDateColumn()
+  created_at: Date;
+
+  constructor(userId: string) {
+    super();
+    this.userId = userId;
   }
 }
