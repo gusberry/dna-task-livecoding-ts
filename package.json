@@ -36,6 +36,7 @@
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.1.6",
     "typeorm": "^0.3.17",
+    "typeorm-fastify-plugin": "^1.0.5",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
